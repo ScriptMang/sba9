@@ -1,0 +1,3 @@
+interface TaskData {
+    data: string
+}
