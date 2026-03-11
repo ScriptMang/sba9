@@ -3,7 +3,14 @@ import type {Task} from './types/index.ts'
 import './App.css'
 
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>([{
+        id: "001",
+        title: "Task 1",
+        description: "lorem ipsum 1.",
+        status: "pending",
+        priority: "low",
+        dueDate: "12/31/2023"
+  }])
 
   return (
     <>
