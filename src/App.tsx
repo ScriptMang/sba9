@@ -2,6 +2,7 @@ import { useState } from 'react'
 import type {TaskStatus} from './types/index.ts' 
 import type {Task} from './types/index.ts'
 import TaskList from './components/TaskList/TaskList'
+import TaskFilter from './components/TaskFilter/TaskFilter'
 
 import './App.css'
 
@@ -39,6 +40,7 @@ const deleteTaskHandler =  (taskId: string) => {
 
   return (
     <>
+    <TaskFilter onFilterChange={()=>{}}/>
     <TaskList tasks={tasks} onStatusChange={taskStatusHandler} onDelete={deleteTaskHandler}/>
     </>
   )
