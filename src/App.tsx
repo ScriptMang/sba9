@@ -1,8 +1,9 @@
 import { useState } from 'react'
+import type {Task} from './types/index.ts'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState<Task[]>([])
 
   return (
     <>
