@@ -9,6 +9,10 @@ export interface Task {
     dueDate: string;
 }
 
+export interface TaskFormProps {
+    task: Task
+    onSubmit: (taskid: string, newTask: Task) => void 
+}
 
 export interface TaskListProps {
     tasks: Task[];
