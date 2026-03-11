@@ -1,5 +1,5 @@
 import type {TaskFilterProps} from '../../types/index.ts'
-
+import type {TaskStatus} from '../../types/index.ts'
 
 function TaskFilter({onFilterChange}:TaskFilterProps ){
     return (

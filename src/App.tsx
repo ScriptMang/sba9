@@ -36,7 +36,7 @@ const deleteTaskHandler =  (taskId: string) => {
     const targetId = Number(taskId);
     console.log(`Remove a task with id: ${taskId}`);
     setTasks(prevTasks => (prevTasks as Task[]).filter(task => Number(task.id) !== targetId));
-  }
+}
 
   return (
     <>
