@@ -38,9 +38,26 @@ const deleteTaskHandler =  (taskId: string) => {
     setTasks(prevTasks => (prevTasks as Task[]).filter(task => Number(task.id) !== targetId));
 }
 
+ // copy of the tasklist prior to filtering 
+  const preFilteredTaskList = tasks as Task[];
+
+  // filters tasks based on status or priority changes for each of their drop downs 
+  const filterTaskHandler = (filter: { status?: TaskStatus
+    priority?: 'low' | 'medium' | 'high';}) =>{
+      if (filter?.status !== undefined){
+         setTasks(prevTasks => (prevTasks as Task[]).filter(task => task.status === filter.status));
+      } else if (filter?.priority !== undefined) {
+         setTasks(prevTasks => (prevTasks as Task[]).filter(task => task.priority === filter.priority));
+      } else {
+        setTasks(preFilteredTaskList);
+        console.log("Both the task status and the task priority passed are undefined")
+        console.log("Resetting the TaskList.")
+      }
+  }
+
   return (
     <>
-    <TaskFilter onFilterChange={()=>{}}/>
+    <TaskFilter onFilterChange={filterTaskHandler}/>
     <TaskList tasks={tasks} onStatusChange={taskStatusHandler} onDelete={deleteTaskHandler}/>
     </>
   )
