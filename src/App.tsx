@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import type {Task} from './types/index.ts'
+import TaskList from './components/TaskList/TaskList'
+
 import './App.css'
 
 function App() {
@@ -14,7 +16,7 @@ function App() {
 
   return (
     <>
-
+    <TaskList tasks={tasks} onStatusChange={()=>{}} onDelete={()=>{}}/>
     </>
   )
 }
