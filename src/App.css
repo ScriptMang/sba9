@@ -1,42 +1,42 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+#taskContainer {
+    border: solid black 1px;
+    width: 440px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+#taskListContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#taskFilterContainer{
+    display: flex;
+    gap: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+
+#taskTitleInfo1 {
+    display: flex;
+    margin-left: 15px;
 }
 
-.card {
-  padding: 2em;
+#taskDescription {
+    margin-top: 0px;
+    margin-left: 15px;
 }
 
-.read-the-docs {
-  color: #888;
+#taskItemOptions {
+    display: flex;
+    column-gap: 10px;
+    height: 30px;
+    width: 150px;
+    align-self: center;
+    margin-left: 200px;
+}
+
+#taskInfo2 {
+    display: flex;
+    gap: 10px;
+    margin-left: 15px;
 }
