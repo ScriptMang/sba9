@@ -10,7 +10,6 @@ export interface Task {
 }
 
 export interface TaskFormProps {
-    task: Task
     onSubmit: (taskid: string, newTask: Task) => void 
 }
 

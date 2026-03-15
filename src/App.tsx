@@ -3,6 +3,7 @@ import type {TaskStatus} from './types/index.ts'
 import type {Task} from './types/index.ts'
 import TaskList from './components/TaskList/TaskList'
 import TaskFilter from './components/TaskFilter/TaskFilter'
+import TaskForm from './components/TaskForm/TaskForm'
 
 import './App.css'
 
@@ -57,6 +58,7 @@ const deleteTaskHandler =  (taskId: string) => {
 
   return (
     <>
+    <TaskForm onSubmit={()=>{}}/>
     <TaskFilter onFilterChange={filterTaskHandler}/>
     <TaskList tasks={tasks} onStatusChange={taskStatusHandler} onDelete={deleteTaskHandler}/>
     </>
