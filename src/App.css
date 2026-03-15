@@ -40,3 +40,8 @@
     gap: 10px;
     margin-left: 15px;
 }
+
+#taskForm {
+    display: flex;
+    flex-direction: column;
+}

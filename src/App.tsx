@@ -17,6 +17,19 @@ function App() {
         dueDate: "12/31/2023"
   }])
 
+let tempTask: Task = {
+        id: "000",
+        title: "",
+        description: "",
+        status: "pending",
+        priority: "low",
+        dueDate: "12/31/2023"
+}
+const addTaskHandler= (taskId: string, newTask: Task) => {
+  console.log("Adding the new task: ", newTask, `Has the task id of ${taskId}`);
+  setTasks([...tasks, newTask])
+}
+
   const taskStatusHandler = (taskId: string, newStatus: TaskStatus) => {
   const targetTaskId = Number(taskId)
   console.log("Inside the task handler the str_id to num_id is: ", targetTaskId);
@@ -58,7 +71,7 @@ const deleteTaskHandler =  (taskId: string) => {
 
   return (
     <>
-    <TaskForm onSubmit={()=>{}}/>
+    <TaskForm  task={tempTask} onFormSubmit={addTaskHandler}/>
     <TaskFilter onFilterChange={filterTaskHandler}/>
     <TaskList tasks={tasks} onStatusChange={taskStatusHandler} onDelete={deleteTaskHandler}/>
     </>
