@@ -34,7 +34,7 @@ let tempTask: Task = {
 const addTaskHandler= (taskId: string, newTask: Task) => {
   console.log("Adding the new task: ", newTask, `Has the task id of ${taskId}`);
   setTasks([...tasks, newTask])
-
+  setSortedTasks([...tasks, newTask])
 }
 
   const taskStatusHandler = (taskId: string, newStatus: TaskStatus) => {
@@ -59,6 +59,8 @@ const deleteTaskHandler =  (taskId: string) => {
     const targetId = Number(taskId);
     console.log(`Remove a task with id: ${taskId}`);
     setTasks(prevTasks => (prevTasks as Task[]).filter(task => Number(task.id) !== targetId));
+    setSortedTasks(prevTasks => (prevTasks as Task[]).filter(task => Number(task.id) !== targetId))
+
 }
 
 
@@ -67,9 +69,9 @@ const deleteTaskHandler =  (taskId: string) => {
   // filters tasks based on status or priority changes for each of their drop downs 
   const filterTaskHandler = (filter: { status?: TaskStatus
     priority?: 'low' | 'medium' | 'high';}) =>{
-      console.log("Prior to filter checks...")
-      console.log(`TaskStatus  for the filter is: ${filter.status}`);
-      console.log(`Task priority  for the filter is: ${filter.priority}`);
+      // console.log("Prior to filter checks...")
+      // console.log(`TaskStatus  for the filter is: ${filter.status}`);
+      // console.log(`Task priority  for the filter is: ${filter.priority}`);
 
       if (filter?.status as string === "All Statuses" || filter?.priority as string === "All Priorities" ) {
          setTasks(sortedTasks);
@@ -79,9 +81,7 @@ const deleteTaskHandler =  (taskId: string) => {
       } else if (filter?.priority !== undefined) {
          setTasks(sortedTasks.filter(task => task.priority === filter.priority));
       } else {
-        setTasks(sortedTasks);
-        console.log("Both the task status and the task priority passed are undefined")
-        console.log("Resetting the TaskList.")
+        console.error("Both the task status and the task priority passed are undefined")
       }
   }
 
