@@ -23,7 +23,7 @@ function TaskForm({task, onFormSubmit}:TaskFormProps){
      <input id="priorityInput" type="text" onChange={(e)=>{ task.priority =e.target.value as 'low'|'medium'|'high'; }}/>
 
      <label htmlFor="dueDateInput">dueDate: </label>
-     <input id="dueDateInput" type="text" onChange={(e)=>{ task.id =e.target.value; }}/>
+     <input id="dueDateInput" type="text" onChange={(e)=>{ task.dueDate =e.target.value; }}/>
 
      <button onClick={()=>{
         console.log("The new task object is: ", task);
