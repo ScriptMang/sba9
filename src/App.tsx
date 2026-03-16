@@ -17,6 +17,10 @@ function App() {
         dueDate: "12/31/2023"
   }])
 
+
+ // copy of the tasklist prior to filtering 
+   const [sortedTasks, setSortedTasks] = useState<Task[]>(tasks);
+
 let tempTask: Task = {
         id: "000",
         title: "",
@@ -25,9 +29,12 @@ let tempTask: Task = {
         priority: "low",
         dueDate: "12/31/2023"
 }
+
+
 const addTaskHandler= (taskId: string, newTask: Task) => {
   console.log("Adding the new task: ", newTask, `Has the task id of ${taskId}`);
   setTasks([...tasks, newTask])
+
 }
 
   const taskStatusHandler = (taskId: string, newStatus: TaskStatus) => {
@@ -46,24 +53,33 @@ const addTaskHandler= (taskId: string, newTask: Task) => {
   }
 }
 
+
+
 const deleteTaskHandler =  (taskId: string) => {
     const targetId = Number(taskId);
     console.log(`Remove a task with id: ${taskId}`);
     setTasks(prevTasks => (prevTasks as Task[]).filter(task => Number(task.id) !== targetId));
 }
 
- // copy of the tasklist prior to filtering 
-  const preFilteredTaskList = tasks as Task[];
 
+
+ 
   // filters tasks based on status or priority changes for each of their drop downs 
   const filterTaskHandler = (filter: { status?: TaskStatus
     priority?: 'low' | 'medium' | 'high';}) =>{
-      if (filter?.status !== undefined){
-         setTasks(prevTasks => (prevTasks as Task[]).filter(task => task.status === filter.status));
+      console.log("Prior to filter checks...")
+      console.log(`TaskStatus  for the filter is: ${filter.status}`);
+      console.log(`Task priority  for the filter is: ${filter.priority}`);
+
+      if (filter?.status as string === "All Statuses" || filter?.priority as string === "All Priorities" ) {
+         setTasks(sortedTasks);
+        console.log("Resetting the TaskList.")
+      } else if (filter?.status !== undefined){
+          setTasks(sortedTasks.filter(task => task.status === filter.status));
       } else if (filter?.priority !== undefined) {
-         setTasks(prevTasks => (prevTasks as Task[]).filter(task => task.priority === filter.priority));
+         setTasks(sortedTasks.filter(task => task.priority === filter.priority));
       } else {
-        setTasks(preFilteredTaskList);
+        setTasks(sortedTasks);
         console.log("Both the task status and the task priority passed are undefined")
         console.log("Resetting the TaskList.")
       }
