@@ -70,11 +70,14 @@ const deleteTaskHandler =  (taskId: string) => {
   }
 
   return (
-    <>
-    <TaskForm  task={tempTask} onFormSubmit={addTaskHandler}/>
-    <TaskFilter onFilterChange={filterTaskHandler}/>
-    <TaskList tasks={tasks} onStatusChange={taskStatusHandler} onDelete={deleteTaskHandler}/>
-    </>
+    <div id= "taskDashboard">
+     <TaskForm  task={tempTask} onFormSubmit={addTaskHandler}/>
+     <div id="taskListContainer">
+      <h1>Task List</h1>
+       <TaskFilter onFilterChange={filterTaskHandler}/>
+       <TaskList tasks={tasks} onStatusChange={taskStatusHandler} onDelete={deleteTaskHandler}/>
+     </div>
+    </div>
   )
 }
 
