@@ -4,6 +4,8 @@ import type {Task} from './types/index.ts'
 import TaskList from './components/TaskList/TaskList'
 import TaskFilter from './components/TaskFilter/TaskFilter'
 import TaskForm from './components/TaskForm/TaskForm'
+import DashBoard from './components/Dashboard/Dashboard'
+
 
 import './App.css'
 
@@ -63,9 +65,6 @@ const deleteTaskHandler =  (taskId: string) => {
 
 }
 
-
-
- 
   // filters tasks based on status or priority changes for each of their drop downs 
   const filterTaskHandler = (filter: { status?: TaskStatus
     priority?: 'low' | 'medium' | 'high';}) =>{
@@ -86,14 +85,19 @@ const deleteTaskHandler =  (taskId: string) => {
   }
 
   return (
-    <div id= "taskDashboard">
-     <TaskForm  task={tempTask} onFormSubmit={addTaskHandler}/>
-     <div id="taskListContainer">
-      <h1>Task List</h1>
-       <TaskFilter onFilterChange={filterTaskHandler}/>
-       <TaskList tasks={tasks} onStatusChange={taskStatusHandler} onDelete={deleteTaskHandler}/>
-     </div>
-    </div>
+
+    <>
+      <DashBoard>
+        <div id= "taskDashboard">
+         <TaskForm  task={tempTask} onFormSubmit={addTaskHandler}/>
+         <div id="taskListContainer">
+          <h1>Task List</h1>
+          <TaskFilter onFilterChange={filterTaskHandler}/>
+          <TaskList tasks={tasks} onStatusChange={taskStatusHandler} onDelete={deleteTaskHandler}/>
+         </div>
+        </div>        
+      </DashBoard>
+    </>
   )
 }
 
